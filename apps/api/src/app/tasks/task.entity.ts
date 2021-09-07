@@ -1,0 +1,24 @@
+import { BaseEntity, Entity, JoinTable, ManyToMany, PrimaryColumn } from 'typeorm';
+import { Employee } from './employee.entity';
+
+@Entity('tasks')
+export class Task extends BaseEntity {
+  @PrimaryColumn('bigint', { nullable: false })
+  id: number;
+
+  @ManyToMany(
+    () => Employee,
+    employee => employee.assignedTo,
+    { nullable: true, cascade: true }
+  )
+  @JoinTable()
+  assignees?: Employee[];
+
+  constructor(args: {
+    id: number,
+    assignees?: Employee[]
+  }) {
+    super();
+    Object.assign(this, args);
+  }
+}

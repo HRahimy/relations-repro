@@ -11,10 +11,15 @@
   "dependencies": {
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
+    "@nestjs/cqrs": "^8.0.0",
     "@nestjs/platform-express": "^7.0.0",
+    "@nestjs/typeorm": "^8.0.2",
+    "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "~6.6.3",
-    "tslib": "^2.0.0"
+    "rxjs": "^7",
+    "tslib": "^2.0.0",
+    "typeorm": "^0.2.37",
+    "typeorm-naming-strategies": "^2.0.0"
   },
   "devDependencies": {
     "@nestjs/schematics": "^7.0.0",

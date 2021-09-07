@@ -1,7 +1,7 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Task } from './task.entity';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { Employee } from './employee.entity';
 
 export class CreateCommand {
@@ -48,7 +48,6 @@ export class AssignHandler implements ICommandHandler<AssignCommand> {
       assignees: employees
     }));
   }
-
 }
 
 export class UnassignCommand {
@@ -68,7 +67,7 @@ export class UnassignHandler implements ICommandHandler<UnassignCommand> {
       .then(async result => {
         // Remove employee with id of 2
         result.assignees = result.assignees.filter(a =>
-          a.id == 2
+          a.id !== 3
         );
 
         await result.save();

@@ -1,9 +1,13 @@
 import { BaseEntity, Entity, JoinTable, ManyToMany, PrimaryColumn } from 'typeorm';
 import { Employee } from './employee.entity';
+import { ColumnNumericTransformer } from './transformer';
 
 @Entity('tasks')
 export class Task extends BaseEntity {
-  @PrimaryColumn('bigint', { nullable: false })
+  @PrimaryColumn('bigint', {
+    transformer: new ColumnNumericTransformer(),
+    generated: 'increment'
+  })
   id: number;
 
   @ManyToMany(
